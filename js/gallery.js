@@ -1,9 +1,9 @@
 "use strict";    // Файл для работы с взаимодействием с изображениями
 
 (function() {
-	window.gallery = {
-		ESC_KEYCODE: 27,
-		ENTER_KEYCODE: 13
+	window.KeyCode = {
+		ESC: 27,
+		ENTER: 13
 	};
 	var galleryClose = document.querySelector(".gallery-overlay-close");
 	var picturesContainer = document.querySelector(".pictures");
@@ -19,7 +19,7 @@
 	};
 
 	var onPopupEscPress = function(evt) {
-		if(evt.keyCode === window.gallery.ESC_KEYCODE) {
+		if(evt.keyCode === window.KeyCode.ESC) {
 			closePopup();
 		}
 	};
@@ -29,7 +29,7 @@
 	});
 
 	galleryClose.addEventListener('keydown', function(evt) {
-		if(evt.keyCode === window.gallery.ENTER_KEYCODE) {
+		if(evt.keyCode === window.KeyCode.ENTER) {
 			closePopup();
 		}
 	});
@@ -43,7 +43,7 @@
 	});
 
 	picturesContainer.addEventListener('keydown', function(evt) {
-	if(evt.target.tagName == "A" && evt.keyCode === window.gallery.ENTER_KEYCODE) {
+	if(evt.target.tagName == "A" && evt.keyCode === window.KeyCode.ENTER) {
 		window.data.renderMainPhotoEnter(evt);
 		openPopup();
 		evt.preventDefault()

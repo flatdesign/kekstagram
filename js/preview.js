@@ -17,7 +17,7 @@
 	};
 
 	var onUploadEscPress = function(evt) {
-		if(evt.keyCode === window.gallery.ESC_KEYCODE && document.activeElement != window.comment) {
+		if(evt.keyCode === window.KeyCode.ESC && document.activeElement != window.comment) {
 			closeUpload();
 		}
 	};
@@ -31,7 +31,7 @@
 	});
 
 	uploadCansel.addEventListener("keydown", function(evt) {
-		if(evt.keyCode === window.gallery.ENTER_KEYCODE) {
+		if(evt.keyCode === window.KeyCode.ENTER) {
 			closeUpload();
 		}	
 	});

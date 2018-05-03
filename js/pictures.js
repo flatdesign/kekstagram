@@ -1,7 +1,9 @@
 'use strict'
 
-var ESC_KEYCODE = 27;
-var ENTER_KEYCODE = 13;
+var KeyCode = {
+	ESC: 27,
+	ENTER: 13
+}
 
 var pictureElement = document.querySelector(".picture");
 var findTemplate = document.querySelector("#picture-template").content.querySelector(".picture");
@@ -24,7 +26,7 @@ var openPopup = function() {
 };
 
 var onPopupEscPress = function(evt) {
-	if(evt.keyCode === ESC_KEYCODE) {
+	if(evt.keyCode === KeyCode.ESC) {
 		closePopup();
 	}
 };
@@ -36,7 +38,7 @@ galleryClose.addEventListener('click', function() {
 });
 
 galleryClose.addEventListener('keydown', function(evt) {
-	if(ent,keyCode === ENTER_KEYCODE) {
+	if(ent,keyCode === KeyCode.ENTER) {
 		closePopup();
 	}
 });
@@ -64,7 +66,7 @@ var renderMainPhotoEnter = function(evt) {
 
 
 picturesContainer.addEventListener('keydown', function(evt) {
-	if(evt.target.tagName == "A" && evt.keyCode === ENTER_KEYCODE) {
+	if(evt.target.tagName == "A" && evt.keyCode === KeyCode.ENTER) {
 		renderMainPhotoEnter(evt);
 		openPopup();
 		evt.preventDefault()
@@ -305,7 +307,7 @@ var closeUpload = function() {
 };
 
 var onUploadEscPress = function(evt) {
-	if(evt.keyCode === ESC_KEYCODE && document.activeElement != comment) {
+	if(evt.keyCode === KeyCode.ESC && document.activeElement != comment) {
 		closeUpload();
 	}
 };
@@ -319,7 +321,7 @@ uploadCansel.addEventListener("click", function() {
 });
 
 uploadCansel.addEventListener("keydown", function(evt) {
-	if(evt.keyCode === ENTER_KEYCODE) {
+	if(evt.keyCode === KeyCode.ENTER) {
 		closeUpload();
 	}	
 });
@@ -340,14 +342,22 @@ var imagePreview = document.querySelector(".effect-image-preview");
 
 var effectConrols = document.querySelector(".upload-effect-controls");
 
+var effectNameToClassName = {
+	"upload-effect-none": "effect-none",
+	"upload-effect-chrome": "effect-chrome",
+	"upload-effect-sepia": "effect-sepia",
+	"upload-effect-marvin": "effect-marvin",
+	"upload-effect-phobos": "effect-phobos",
+	"upload-effect-heat": "effect-heat"
+}
+
 effectConrols.addEventListener("click", function(evt) {
 	if(evt.target.className = "upload-effect-preview") {
 		evt.preventDefault();
 		var nameOfClass = evt.target.parentNode.getAttribute("For");
-		var newNameFirst = nameOfClass.slice(7);
 		imagePreview.className = "";
 		imagePreview.classList.add("effect-image-preview");
-		imagePreview.classList.add(newNameFirst);
+		imagePreview.classList.add(effectNameToClassName[nameOfClass]);
 	}
 });
 
